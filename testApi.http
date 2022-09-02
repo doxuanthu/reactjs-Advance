@@ -1,0 +1,89 @@
+@baseURL = http://localhost:5000
+
+GET {{baseURL}}/api/students/
+
+###
+DELETE {{baseURL}}/api/students/delete/3
+ 
+###
+PATCH {{baseURL}}/api/students/updated/1
+Content-Type: application/json
+
+{
+    "name": "biology",
+    "score": 6.2
+} 
+
+###
+POST {{baseURL}}/api/students/new-student
+Content-Type: application/json
+
+{
+    "name": "Paul",
+    "scores": [
+      {
+        "name": "math",
+        "score": 7
+      },
+      {
+        "name": "phisics",
+        "score": 6
+      },
+      {
+        "name": "chemistry",
+        "score": 5
+      }
+    ]
+  }
+
+###
+GET {{baseURL}}/api/products/foods 
+
+###
+POST {{baseURL}}/api/products/foods/new-product
+Content-Type: application/json
+
+ {
+      "name": "pork",
+      "price": 20,
+      "unit": "kilograms"
+    }
+
+###
+PATCH {{baseURL}}/api/products/food/update/9
+Content-Type: application/json
+
+ {
+      "name": "washing machine"    
+    }
+###
+DELETE {{baseURL}}/api/products/foods/delete/8
+
+###
+POST {{baseURL}}/api/products/new-category
+Content-Type: application/json
+
+    {
+      "name": "Computer & Accessories",
+      "products": [
+        {
+            "name": "Giấy in nhiệt Shoptida 1000 tờ A6 10*15cm 3 lớp tự dán chống nước, sử dụng cho máy in nhiệt Shoptida SP46",
+            "price": 230000
+        },
+         {
+            "name": "Ram laptop 4gb DDR3L hoặc DDR3 bus 1600, 1333 và 1066 dùng cho laptop",
+            "price": 199000
+        }
+      ]  
+    }
+
+###
+DELETE {{baseURL}}/api/products/delete-category/Computer & Accessories-uuid
+
+###
+PATCH {{baseURL}}/api/products/update-category/food-uuid
+Content-Type: application/json
+
+{
+    "name": "food"
+}
