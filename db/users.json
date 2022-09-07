@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "username updated",
+      "password": "password updated",
+      "full_name": "Virginia Kuhn",
+      "role_id": 2,
+      "createdAt": 1662483451451,
+      "updatedAt": 1662484185378
+    },
+    {
+      "id": 2,
+      "userName": "Coralie66",
+      "password": "vhQ_CEFyGMhRwiG",
+      "full_name": "Rafael Kutch",
+      "role_id": 2,
+      "createdAt": 1662483451451,
+      "updatedAt": 1662483451451
+    },
+    {
+      "id": 3,
+      "userName": "Amir_OKon",
+      "password": "66SkAgVpwyV381M",
+      "full_name": "Ms. Marta Stiedemann",
+      "role_id": 3,
+      "createdAt": 1662483451451,
+      "updatedAt": 1662484117289
+    },
+    {
+      "id": 4,
+      "userName": "Alfred_Simonis16",
+      "password": "Z4XiRbNaSuOajSY",
+      "full_name": "Peggy Beahan",
+      "role_id": 2,
+      "createdAt": 1662483451451,
+      "updatedAt": 1662483451451
+    },
+    {
+      "id": 5,
+      "userName": "Madisen4",
+      "password": "i82pPgE7O9sRlTO",
+      "full_name": "Carolyn Graham",
+      "role_id": 1,
+      "createdAt": 1662483451452,
+      "updatedAt": 1662483451452
+    },
+    {
+      "id": 6,
+      "userName": "Felton_Hane",
+      "password": "XIyKE6t8kXwa4Jb",
+      "full_name": "Vicki Schaden PhD",
+      "role_id": 1,
+      "createdAt": 1662483451452,
+      "updatedAt": 1662483451452
+    },
+    {
+      "id": 7,
+      "userName": "username updated with admin rights",
+      "password": "password updated 123",
+      "full_name": "Robert Balistreri",
+      "role_id": 1,
+      "createdAt": 1662483451452,
+      "updatedAt": 1662564860204
+    }
+  ],
+  "config": { "current_user_id": 7 }
+}
