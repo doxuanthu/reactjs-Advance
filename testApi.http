@@ -1,0 +1,221 @@
+@baseURL = http://localhost:5000/api
+@resource1 = /store
+@resource2 = /users
+
+@resource3 = /role
+// get all brands
+GET {{baseURL}}{{resource1}}/brands
+
+###
+// find brand by brand ID
+GET {{baseURL}}{{resource1}}/brands/5a96c314-a07f-47d5-988d-7e5487bc84bc
+
+###
+// get all categories
+GET {{baseURL}}{{resource1}}/categories
+
+###
+// find brand by category ID
+GET {{baseURL}}{{resource1}}/categories/9aaf8fe2-95d7-4648-8a55-cd67543415c5
+
+###
+// get all products
+GET {{baseURL}}{{resource1}}/products
+
+###
+// find product by product ID
+GET {{baseURL}}{{resource1}}/products/3b6b8d24-3f76-4037-8216-f3fd3c9506d2
+
+###
+// find all products within brand by brand ID
+GET {{baseURL}}{{resource1}}/brands/5a96c314-a07f-47d5-988d-7e5487bc84bc/products
+
+###
+// find all products within category by brand ID
+GET {{baseURL}}{{resource1}}/categories/9aaf8fe2-95d7-4648-8a55-cd67543415c5/products
+
+###
+// create a new product
+POST {{baseURL}}{{resource1}}/new-product
+Content-Type: application/json
+
+{
+    "name": "iphone 12",
+    "price": 920,
+    "category_id": "d46578bc-216f-4992-94d5-d48d08d6d8ff",
+    "brand_id": "f5465571-adc3-4177-bd23-c5e807323915"
+}
+
+###
+// update a product
+PUT {{baseURL}}{{resource1}}/update-product/194040bc-0e16-4e9c-a476-3c6bdb82ae38
+Content-Type: application/json
+
+{
+    "name": "i pod v12",
+    "price": 124,
+    "category_id": "d46578bc-216f-4992-94d5-d48d08d6d8ff",
+    "brand_id": "f5465571-adc3-4177-bd23-c5e807323915"
+}
+
+###
+// remove a product by product ID
+DELETE {{baseURL}}{{resource1}}/delete-product/194040bc-0e16-4e9c-a476-3c6bdb82ae38
+
+#######################################################################
+
+// get all user
+GET {{baseURL}}{{resource2}}
+
+###
+// find user by user name and password
+POST {{baseURL}}{{resource2}}/auth
+Content-Type: application/json
+
+{
+    "userName": "Madisen4",
+    "password": "i82pPgE7O9sRlTO"
+}
+
+###
+// Add a new user within admin role
+POST {{baseURL}}{{resource2}}/admin/new-user/
+Content-Type: application/json
+
+{
+   "userName": "user 123",
+   "password": "password 123",
+   "full_name": "full name 123",
+   "role_id": 3
+}
+
+###
+// update use info by id
+PATCH {{baseURL}}{{resource2}}/update/1
+Content-Type: application/json
+
+{
+   "userName": "username updated",
+   "password": "password updated",
+   "role_id": 2
+}
+
+###
+// remove a user by user ID
+DELETE {{baseURL}}{{resource2}}/delete/8
+
+#######################################################################
+// role user
+
+//get all products
+GET {{baseURL}}{{resource3}}/user/products?userName=Madisen4&password=i82pPgE7O9sRlTO
+
+###
+//get list products by brand name
+GET {{baseURL}}{{resource3}}/user/brands/brands_name 2?userName=Madisen4&password=i82pPgE7O9sRlTO
+
+###
+//get list products by category name
+GET {{baseURL}}{{resource3}}/user/categories/category_name 2?userName=Madisen4&password=i82pPgE7O9sRlTO
+
+###
+//find product by product id
+GET {{baseURL}}{{resource3}}/user/products/db579b4f-82cc-4ac8-863f-c0071363bdb9?userName=Madisen4&password=i82pPgE7O9sRlTO
+
+###
+//add new brand
+POST {{baseURL}}{{resource3}}/staff/new-brand?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+Content-Type: application/json
+
+{
+    "name": "brands_name 4"
+}
+
+###
+//add new category
+POST {{baseURL}}{{resource3}}/staff/new-category?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+Content-Type: application/json
+
+{
+    "name": "category_name 3",
+    "products": []
+}
+
+###
+//add new product
+POST {{baseURL}}{{resource3}}/staff/new-product?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+Content-Type: application/json
+
+{
+    "name": "new product 12",
+    "price": "200.00",
+    "category_id": "09d43aee-0615-426e-9cb9-40664050977c",
+    "brand_id": "357714ec-ec5a-4eec-a6e1-32452b4835d4"
+}
+
+###
+// update brand name by brand id
+PATCH {{baseURL}}{{resource3}}/staff/update-brand/357714ec-ec5a-4eec-a6e1-32452b4835d4?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+Content-Type: application/json
+
+{
+   "name": "brands_name 1 updated"
+}
+
+###
+// update category name by category id
+PATCH {{baseURL}}{{resource3}}/staff/update-category/5ed451ba-c2a2-4b72-84e8-9c1351ec3195?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+Content-Type: application/json
+
+{
+   "name": "category_name 1 updated"
+}
+
+###
+// update product info by product id
+PATCH {{baseURL}}{{resource3}}/staff/update-product/86809b98-eef7-47be-a45c-47d31723f2ac?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+Content-Type: application/json
+
+{
+    "name": "product 100 updated",
+    "price": 120
+}
+
+###
+// remove a brand by brand ID
+DELETE {{baseURL}}{{resource3}}/staff/delete-brand/357714ec-ec5a-4eec-a6e1-32452b4835d4?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+
+###
+// remove a category by category ID
+DELETE {{baseURL}}{{resource3}}/staff/delete-category/5ed451ba-c2a2-4b72-84e8-9c1351ec3195?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+
+###
+// remove a product by product ID
+DELETE {{baseURL}}{{resource3}}/staff/delete-product/db579b4f-82cc-4ac8-863f-c0071363bdb9?userName=Coralie66&password=vhQ_CEFyGMhRwiG
+
+###
+// update use info by id with admin rights
+PATCH {{baseURL}}{{resource3}}/admin/update-user/7?userName=Amir_OKon&password=66SkAgVpwyV381M
+Content-Type: application/json
+
+{
+   "userName": "username updated with admin rights",
+   "password": "password updated 123",
+   "role_id": 1
+}
+
+###
+// Add a new user with admin rights
+POST {{baseURL}}{{resource3}}/admin/new-user?userName=Amir_OKon&password=66SkAgVpwyV381M
+Content-Type: application/json
+
+{
+   "userName": "insertusername123",
+   "password": "insertpassword123",
+   "full_name": "full name something",
+   "role_id": 1
+}
+
+###
+// remove a user by ID with admin rights
+DELETE {{baseURL}}{{resource3}}/admin/delete-user/8?userName=Amir_OKon&password=66SkAgVpwyV381M
