@@ -1,1 +1,0 @@
-$ = document.querySelector.bind(document);
