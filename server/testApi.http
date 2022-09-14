@@ -1,0 +1,123 @@
+@baseURL = http://localhost:5000/api
+
+@resource1 = /products
+@resource2 = /store
+@resource3 = /system
+POST {{baseURL}}{{resource1}}/new-product
+Content-Type: application/json
+
+{
+    "name": "iphone 14",
+    "price": 2000,
+    "brand": "Apple",
+    "category": "mobile_id"
+}
+
+###
+PATCH {{baseURL}}{{resource1}}/update/-NBSGJHSGH1Dd5bxIq7L
+Content-Type: application/json
+
+{
+    "name": "Galaxy S800",
+    "price": 1400
+}
+
+###
+POST {{baseURL}}{{resource2}}/categories/new
+Content-Type: application/json
+
+{
+    "name": "Gaming and Console"
+}
+
+###
+POST {{baseURL}}{{resource2}}/brands/new
+Content-Type: application/json
+
+{
+    "name": "Samsung"
+}
+
+###
+PATCH {{baseURL}}{{resource2}}/categories/update/-NBXwAbSSMe6w86cYGH-
+Content-Type: application/json
+
+{
+    "name": "Gaming and Console updated"
+}
+
+###
+PATCH {{baseURL}}{{resource2}}/brands/update/-NBSd2yJVXKHOkpHO6uo
+Content-Type: application/json
+
+{
+    "name": "Apple"
+}
+
+###
+DELETE {{baseURL}}{{resource2}}/categories/remove/-NBT5Z5EsThACJCatYLu
+
+
+###
+POST {{baseURL}}{{resource3}}/categories/new
+Content-Type: application/json
+
+{
+    "name": "Video Games"
+}
+
+###
+POST {{baseURL}}{{resource3}}/brands/new
+Content-Type: application/json
+
+{
+    "name": "Life Good"
+}
+
+###
+POST {{baseURL}}{{resource3}}/products/new?key=-NBTC30RK017KKykVamm
+Content-Type: application/json
+
+{
+    "name": "Máy in nhiệt Shoptida SP46",
+    "price": 60,
+    "brand_id": "-NBT6d_ZrEmss0yvFitj",
+    "category_id": "-NBT5Z5EsThACJCatYLu"
+}
+
+###
+POST {{baseURL}}{{resource3}}/role/new
+Content-Type: application/json
+
+{
+    "role_name": "admin"
+}
+
+###
+POST {{baseURL}}{{resource3}}/users/new
+Content-Type: application/json
+
+{
+    "username": "wmaccorkell5@home.pl",
+    "password": "GL01S2BFWpSs",
+    "full_name": "Wye MacCorkell",
+    "role_id": "-NBT9QUihzYRLnOnRwGf"
+}
+
+###
+PATCH {{baseURL}}{{resource3}}/categories/update/-NBT5Z5EsThACJCatYLu?key=-NBTC30RK017KKykVamm
+Content-Type: application/json
+
+{
+    "name": "Gaming and Console"
+}
+
+
+###
+PATCH {{baseURL}}{{resource3}}/users/update/-NBTBqK8xGOUtQqT0n4G?key=-NBTCYPlDPmkxnlM1lLl
+Content-Type: application/json
+
+{
+    "role_id": "-NBT9OmzkbhkX6kxwR0y",
+    "username": "updated demo"
+}
