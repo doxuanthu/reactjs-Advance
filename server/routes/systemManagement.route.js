@@ -13,7 +13,7 @@ const userRef = ref.child("users");
 ref.on(
   "value",
   (snapshot) => {
-    console.log(snapshot.val());
+    // console.log(snapshot.val());
   },
   (errorObject) => {
     console.log("The read failed: " + errorObject.name);

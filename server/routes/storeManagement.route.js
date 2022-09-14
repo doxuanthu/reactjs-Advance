@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
 const db = require("../firebase/realTimeDB");
+const { formatData } = require("../services/services");
 
 const ref = db.ref("/store");
 const categoriesRef = ref.child("categories");
@@ -24,7 +24,7 @@ router.get("/categories", async (req, res) => {
     function (snapshot) {}
   );
 
-  res.json(listCategories);
+  res.json(formatData(listCategories.val()));
 });
 
 // [POST] path: /api/store/categories/new
@@ -59,6 +59,7 @@ router.delete("/categories/remove/:id", (req, res) => {
     }
     console.log("category deleted!");
   });
+  res.status(200).send("category deleted!");
 });
 
 // [GET] path: /api/store/categories/:id
@@ -76,7 +77,7 @@ router.get("/categories/:id", async (req, res) => {
 router.get("/brands", async (req, res) => {
   const listBrands = await brandsRef.once("value", function (snapshot) {});
 
-  res.json(listBrands);
+  res.json(formatData(listBrands.val()));
 });
 
 // [POST] path: /api/store/brands/new
@@ -105,6 +106,20 @@ router.get("/brands/:id", async (req, res) => {
   const { id } = req.params;
   const brands = await brandsRef.once("value", function (snapshot) {});
   res.json(brands.val()[id] || {});
+});
+
+// [DELETE] path: /api/store/brands/remove/:id
+router.delete("/brands/remove/:id", (req, res) => {
+  const { id } = req.params;
+  const removeRef = brandsRef.child(id);
+  removeRef.remove((err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log("brand deleted!");
+  });
+  res.status(200).send("brand deleted!");
 });
 
 module.exports = router;

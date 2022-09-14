@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
 const db = require("../firebase/realTimeDB");
+const { formatData } = require("../services/services");
 
 const ref = db.ref("/products");
 const productsRef = ref.child("products");
@@ -19,8 +19,7 @@ ref.on(
 // [GET] path: /api/products
 router.get("/", async (req, res) => {
   const listProduct = await ref.once("value", function (snapshot) {});
-
-  res.json(listProduct);
+  res.json(formatData(listProduct.val().products));
 });
 
 // [POST] path: /api/products/new-product

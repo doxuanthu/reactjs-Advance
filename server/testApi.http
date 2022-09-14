@@ -27,7 +27,7 @@ POST {{baseURL}}{{resource2}}/categories/new
 Content-Type: application/json
 
 {
-    "name": "Wearable Devices"
+    "name": "Gaming and Console"
 }
 
 ###
@@ -39,11 +39,11 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseURL}}{{resource2}}/categories/update/-NBT5Z5EsThACJCatYLu
+PATCH {{baseURL}}{{resource2}}/categories/update/-NBXwAbSSMe6w86cYGH-
 Content-Type: application/json
 
 {
-    "name": "Gaming and Console"
+    "name": "Gaming and Console updated"
 }
 
 ###
@@ -55,7 +55,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseURL}}{{resource2}}/categories/remove/-NBSXv2TatQyY5dYhiNs
+DELETE {{baseURL}}{{resource2}}/categories/remove/-NBT5Z5EsThACJCatYLu
 
 
 ###
