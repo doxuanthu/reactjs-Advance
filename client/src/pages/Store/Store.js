@@ -1,142 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { Button, Space, Table, Popconfirm } from "antd";
-import { AppstoreAddOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import className from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Row, Col, Badge } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+
+import ProductItem from "./ProductItem";
+import CartDetail from "./CartDetail";
+import { useApp } from "../../hooks/hooks";
 import storeApi from "../../api/storeApi";
 import styles from "./Store.module.scss";
 
 const cx = className.bind(styles);
 function Store() {
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  const { visibleCart, setVisibleCart, numberOfProductsInCart } = useApp();
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    Promise.all([getCategories(), getBrands()])
-      .then(([cate, brands]) => {
-        setCategories(cate);
-        setBrands(brands);
-      })
-      .catch((err) => {
-        console.log("[ERROR] - ", err);
-      });
+    async function getProducts() {
+      const _products = await storeApi.getProducts();
+      setProducts(_products);
+    }
+
+    getProducts();
   }, []);
-
-  const getCategories = () => {
-    return storeApi.getCategories();
-  };
-
-  const getBrands = () => {
-    return storeApi.getbrands();
-  };
-
-  const handleDeleteCategory = (key) => {
-    return new Promise((resolve) => {
-      storeApi.deleteCategoryById(key);
-      setTimeout(() => {
-        resolve(null);
-      }, 500);
-    }).then(async () => {
-      const data = await getCategories();
-      setCategories(data);
-    });
-  };
-
-  const handleDeleteBrand = (key) => {
-    return new Promise((resolve) => {
-      storeApi.deleteBrandById(key);
-      setTimeout(() => {
-        resolve(null);
-      }, 500);
-    }).then(async () => {
-      const data = await getBrands();
-      setBrands(data);
-    });
-  };
-
-  const columns = [
-    {
-      title: "Category Name",
-      dataIndex: "name",
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => {
-        return (
-          <Space direction="horizontal" size="middle">
-            <Link to={`categories/edit/${record.key}`}>Edit</Link>
-            <Popconfirm
-              title="Are you sure you want to delete this category ?"
-              onConfirm={() => handleDeleteCategory(record.key)}
-            >
-              <Link to="">Delete</Link>
-            </Popconfirm>
-          </Space>
-        );
-      },
-    },
-  ];
-
-  const columnsBrands = [
-    {
-      title: "Category Name",
-      dataIndex: "name",
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => {
-        return (
-          <Space direction="horizontal" size="middle">
-            <Link to={`brands/edit/${record.key}`}>Edit</Link>
-            <Popconfirm
-              title="Are you sure you want to delete this brand ?"
-              onConfirm={() => handleDeleteBrand(record.key)}
-            >
-              <Link to="">Delete</Link>
-            </Popconfirm>
-          </Space>
-        );
-      },
-    },
-  ];
-
   return (
     <div className={cx("wrapper")}>
-      <Link style={{ margin: 16, display: "block" }} to="/">
-        <Button icon={<ArrowLeftOutlined />}></Button>
-      </Link>
-      <Link to="categories/new">
-        <Button
-          icon={<AppstoreAddOutlined />}
-          style={{ marginBottom: 30 }}
-          type="primary"
-        >
-          Add New Category
-        </Button>
-      </Link>
-      <Table
-        bordered
-        title={() => "Categories Management Table"}
-        dataSource={categories}
-        columns={columns}
-      />
-
-      <Link to="brands/new">
-        <Button
-          icon={<AppstoreAddOutlined />}
-          style={{ marginBottom: 30 }}
-          type="primary"
-        >
-          Add New Brand
-        </Button>
-      </Link>
-      <Table
-        bordered
-        title={() => "Brands Management Table"}
-        dataSource={brands}
-        columns={columnsBrands}
-      />
+      <section className={cx("cart")} onClick={() => setVisibleCart(true)}>
+        <Badge count={numberOfProductsInCart}>
+          <ShoppingCartOutlined style={{ fontSize: 40 }} />
+        </Badge>
+      </section>
+      {visibleCart && <section className={cx("cart-detail")}></section>}
+      <CartDetail />
+      <h2 className={cx("title")}>Shopping Cart App</h2>
+      <Row justify="center" gutter={[16, 16]}>
+        {products &&
+          !!products.length &&
+          products.map((product) => {
+            return (
+              <Col key={product.key} xs={24} sm={12} lg={8} xl={6}>
+                <ProductItem
+                  id={product.key}
+                  name={product.name}
+                  price={product.price}
+                  thumbnailUrl={product.thumbnailUrl}
+                />
+              </Col>
+            );
+          })}
+      </Row>
     </div>
   );
 }

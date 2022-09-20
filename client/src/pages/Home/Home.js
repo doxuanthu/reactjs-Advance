@@ -7,7 +7,7 @@ const cx = className.bind(styles);
 function Home() {
   return (
     <div className={cx("wrapper")}>
-      <Link to="/products" className={cx("exercise")}>
+      <Link to="/exercise1" className={cx("exercise")}>
         Exercise 01
       </Link>
       <Link to="/store" className={cx("exercise")}>

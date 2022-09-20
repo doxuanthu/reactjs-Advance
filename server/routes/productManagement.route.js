@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const db = require("../firebase/realTimeDB");
 const { formatData } = require("../services/services");
 
@@ -24,12 +25,14 @@ router.get("/", async (req, res) => {
 
 // [POST] path: /api/products/new-product
 router.post("/new-product", (req, res) => {
+  console.log("connected", productsRef);
   const payload = req.body;
   productsRef.push().set({
     ...payload,
     createdAt: Date.now(),
     updatedAt: Date.now(),
   });
+  res.send("added!");
 });
 
 // [PATCH] path: /api/products/update

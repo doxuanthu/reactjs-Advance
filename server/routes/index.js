@@ -1,11 +1,9 @@
-const productRouter = require("./productManagement.route");
-const storeRouter = require("./storeManagement.route");
 const systemRouter = require("./systemManagement.route");
+const productsRouter = require("./productManagement.route");
 
 function routes(app) {
-  app.use("/api/products", productRouter);
-  app.use("/api/store", storeRouter);
   app.use("/api/system", systemRouter);
+  app.use("/api/products", productsRouter);
 }
 
 module.exports = routes;

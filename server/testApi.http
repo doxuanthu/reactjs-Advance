@@ -1,62 +1,6 @@
 @baseURL = http://localhost:5000/api
 
-@resource1 = /products
-@resource2 = /store
 @resource3 = /system
-POST {{baseURL}}{{resource1}}/new-product
-Content-Type: application/json
-
-{
-    "name": "iphone 14",
-    "price": 2000,
-    "brand": "Apple",
-    "category": "mobile_id"
-}
-
-###
-PATCH {{baseURL}}{{resource1}}/update/-NBSGJHSGH1Dd5bxIq7L
-Content-Type: application/json
-
-{
-    "name": "Galaxy S800",
-    "price": 1400
-}
-
-###
-POST {{baseURL}}{{resource2}}/categories/new
-Content-Type: application/json
-
-{
-    "name": "Gaming and Console"
-}
-
-###
-POST {{baseURL}}{{resource2}}/brands/new
-Content-Type: application/json
-
-{
-    "name": "Samsung"
-}
-
-###
-PATCH {{baseURL}}{{resource2}}/categories/update/-NBXwAbSSMe6w86cYGH-
-Content-Type: application/json
-
-{
-    "name": "Gaming and Console updated"
-}
-
-###
-PATCH {{baseURL}}{{resource2}}/brands/update/-NBSd2yJVXKHOkpHO6uo
-Content-Type: application/json
-
-{
-    "name": "Apple"
-}
-
-###
-DELETE {{baseURL}}{{resource2}}/categories/remove/-NBT5Z5EsThACJCatYLu
-
 
 ###
 POST {{baseURL}}{{resource3}}/categories/new
@@ -121,3 +65,23 @@ Content-Type: application/json
     "role_id": "-NBT9OmzkbhkX6kxwR0y",
     "username": "updated demo"
 }
+
+###
+POST {{baseURL}}{{resource3}}/auth
+Content-Type: application/json
+
+{
+    "username": "cwhiscard2@cnn.com",
+    "password": "KqNAKdsmye"
+}
+
+###
+POST {{baseURL}}/products/new-product
+Content-Type: application/json
+
+{
+   "name": "Orange",
+   "price": 3.99,
+   "thumbnailUrl": "https://www.aprifel.com/wp-content/uploads/2019/02/orange.jpg"
+}
+
