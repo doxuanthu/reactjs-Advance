@@ -1,0 +1,87 @@
+@baseURL = http://localhost:5000/api
+
+@resource3 = /system
+
+###
+POST {{baseURL}}{{resource3}}/categories/new
+Content-Type: application/json
+
+{
+    "name": "Video Games"
+}
+
+###
+POST {{baseURL}}{{resource3}}/brands/new
+Content-Type: application/json
+
+{
+    "name": "Life Good"
+}
+
+###
+POST {{baseURL}}{{resource3}}/products/new?key=-NBTC30RK017KKykVamm
+Content-Type: application/json
+
+{
+    "name": "Máy in nhiệt Shoptida SP46",
+    "price": 60,
+    "brand_id": "-NBT6d_ZrEmss0yvFitj",
+    "category_id": "-NBT5Z5EsThACJCatYLu"
+}
+
+###
+POST {{baseURL}}{{resource3}}/role/new
+Content-Type: application/json
+
+{
+    "role_name": "admin"
+}
+
+###
+POST {{baseURL}}{{resource3}}/users/new
+Content-Type: application/json
+
+{
+    "username": "wmaccorkell5@home.pl",
+    "password": "GL01S2BFWpSs",
+    "full_name": "Wye MacCorkell",
+    "role_id": "-NBT9QUihzYRLnOnRwGf"
+}
+
+###
+PATCH {{baseURL}}{{resource3}}/categories/update/-NBT5Z5EsThACJCatYLu?key=-NBTC30RK017KKykVamm
+Content-Type: application/json
+
+{
+    "name": "Gaming and Console"
+}
+
+
+###
+PATCH {{baseURL}}{{resource3}}/users/update/-NBTBqK8xGOUtQqT0n4G?key=-NBTCYPlDPmkxnlM1lLl
+Content-Type: application/json
+
+{
+    "role_id": "-NBT9OmzkbhkX6kxwR0y",
+    "username": "updated demo"
+}
+
+###
+POST {{baseURL}}{{resource3}}/auth
+Content-Type: application/json
+
+{
+    "username": "cwhiscard2@cnn.com",
+    "password": "KqNAKdsmye"
+}
+
+###
+POST {{baseURL}}/products/new-product
+Content-Type: application/json
+
+{
+   "name": "Orange",
+   "price": 3.99,
+   "thumbnailUrl": "https://www.aprifel.com/wp-content/uploads/2019/02/orange.jpg"
+}
+
