@@ -1,0 +1,42 @@
+.wrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .form-register {
+    width: 100%;
+    max-width: 500px;
+    max-height: calc(100vh - 100px);
+    height: 100%;
+    padding: 36px;
+    background-color: rgb(57, 107, 199);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .label {
+      margin-bottom: 8px;
+      font-size: 1.6rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .register-btn {
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .login-link {
+      float: right;
+      margin-top: 6px;
+      color: #fff;
+
+      a {
+        color: yellow;
+      }
+    }
+  }
+}
