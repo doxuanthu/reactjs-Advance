@@ -10,6 +10,10 @@ const authApi = {
   createAccount(payload) {
     axiosClient.post(`${this.resource}/users/new`, payload);
   },
+
+  updatePassword(key, payload) {
+    axiosClient.patch(`${this.resource}/users/update/${key}`, payload);
+  },
 };
 
 export default authApi;

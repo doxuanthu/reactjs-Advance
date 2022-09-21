@@ -1,2 +1,5 @@
-export { default as AuthProvider } from "./AuthContext";
-export { default as AppProvider } from "./AppContext/AppProvider";
+export {
+  default as AuthProvider,
+  AuthContext,
+} from "./AuthContext/AuthProvider";
+export { default as AppProvider, AppContext } from "./AppContext/AppProvider";

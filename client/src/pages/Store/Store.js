@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import className from "classnames/bind";
-import { Row, Col, Badge } from "antd";
+import { Row, Col, Badge, Avatar } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import ProductItem from "./ProductItem";
 import CartDetail from "./CartDetail";
 import { useApp } from "../../hooks/hooks";
 import storeApi from "../../api/storeApi";
+import User from "../../components/User/User";
 import styles from "./Store.module.scss";
 
 const cx = className.bind(styles);
@@ -15,7 +16,10 @@ function Store() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     async function getProducts() {
-      const _products = await storeApi.getProducts();
+      let _products = await storeApi.getProducts();
+      _products = _products.filter(
+        (prod) => prod.category_id === "-NCQCnu_1ASkxu7wlFrO"
+      );
       setProducts(_products);
     }
 
@@ -28,6 +32,7 @@ function Store() {
           <ShoppingCartOutlined style={{ fontSize: 40 }} />
         </Badge>
       </section>
+      <User />
       {visibleCart && <section className={cx("cart-detail")}></section>}
       <CartDetail />
       <h2 className={cx("title")}>Shopping Cart App</h2>

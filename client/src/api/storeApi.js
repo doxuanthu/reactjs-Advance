@@ -1,10 +1,10 @@
 import axiosClient from "./axiosClient";
 
 const storeApi = {
-  resource: "products",
+  resource: "system",
 
   getProducts() {
-    return axiosClient.get(`${this.resource}`);
+    return axiosClient.get(`${this.resource}/products`);
   },
 };
 

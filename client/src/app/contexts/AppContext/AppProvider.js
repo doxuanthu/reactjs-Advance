@@ -7,6 +7,7 @@ function AppProvider({ children }) {
   const [visibleCart, setVisibleCart] = useState(false);
   const { getStoreItem } = storage("cart");
   const [cart, setCart] = useState(getStoreItem());
+  const [visibleModal, setVisibleModal] = useState(false);
   const [numberOfProductsInCart, setNumberOfProductsInCart] = useState(0);
 
   return (
@@ -18,6 +19,8 @@ function AppProvider({ children }) {
         setCart,
         numberOfProductsInCart,
         setNumberOfProductsInCart,
+        visibleModal,
+        setVisibleModal,
       }}
     >
       {children}

@@ -6,7 +6,7 @@ import { storage } from "../../app/services";
 import styles from "./Store.module.scss";
 
 const cx = className.bind(styles);
-function ProductItem({ id, name, price, thumbnailUrl, visibleControl }) {
+function ProductItem({ id, name, price, thumbnailUrl }) {
   const [amount, setAmount] = useState(1);
   const { cart, setCart } = useApp();
   const { getStoreItem, setStoreItem } = storage("cart");

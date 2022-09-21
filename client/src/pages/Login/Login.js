@@ -18,6 +18,7 @@ function Login() {
         form.getFieldsValue()
       );
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(curr_user));
 
       setUser(curr_user);
     } catch (error) {
@@ -31,13 +32,13 @@ function Login() {
   useEffect(() => {
     message.config({
       top: "20vh",
-      duration: 2,
+      duration: 4,
     });
   }, []);
 
   useEffect(() => {
     if (user) {
-      navigate("/exercise1");
+      navigate("/");
       return;
     }
   }, [user, navigate]);
